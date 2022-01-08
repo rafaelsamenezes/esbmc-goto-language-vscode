@@ -1,0 +1,81 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "GOTO",
+	"patterns": [
+		{
+			"name": "keyword.control.goto",
+			"match": "\\b(IF|GOTO|THEN|RETURN|END_FUNCTION|dead)\\b"
+		},
+		{
+			"name": "keyword.operator.comparasion.goto",
+            "match": "==|!=|>|<"
+        },
+		{
+            "match": "(//).*$\\n?",
+            "name": "comment.line.goto"
+        },
+		{
+            "begin": "(\\s*)(\\$?[_a-zA-Z_0-9]+) (\\()(.*)(\\))",
+            "beginCaptures": {
+                "2": {
+                    "name": "support.function.goto"
+                },
+				"3": {
+					"name": "meta.brace.paren.goto"
+				},
+				"5": {
+					"name": "meta.brace.paren.goto"
+				}
+            },
+            "end": ":",
+            "name": "meta.declaration.object.goto"
+        },
+		{
+			"begin": "ESBMC version",
+			"end": "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+			"name": "comment.block.goto"
+		},
+		{
+            "begin": "(\\s*)(FUNCTION_CALL:)(\\s+)([a-zA-Z_0-9]+)\\(.*\\)",
+            "beginCaptures": {
+                "2": {
+                    "name": "keyword.control.goto"
+                },
+                "4": {
+                    "name": "support.function.goto"
+                }
+            },
+            "name": "meta.declaration.object.goto",
+			"end": " |;|{|}|\t|=|(|)|[|]"
+        },
+		{
+            "begin": "([a-zA-Z_0-9]+)\\(.*\\)",
+            "beginCaptures": {
+                "1": {
+                    "name": "support.function.goto"
+                }
+            },
+            "name": "meta.declaration.object.goto",
+			"end": " |;|{|}|\t|=|(|)|[|]"
+        },
+		{
+			"name": "meta.declaration.object.goto",
+            "begin": "([_a-zA-Z_0-9]+)(\\s*)(=+)",
+            "beginCaptures": {
+                "1": {
+                    "name": "variable.other.goto"
+                },
+                "3": {
+                    "name": "keyword.operator.assignment.goto"
+                }
+            },
+            "end": " |;|{|}|\t|=|(|)|[|]",
+            "endCaptures": {
+                "1": {
+                    "name": "meta.brace.curly.goto"
+                }
+            }
+        }
+	],
+	"scopeName": "source.goto"
+}

@@ -1,0 +1,25 @@
+{
+    "name": "esbmc-goto",
+    "displayName": "ESBMC GOTO",
+    "description": "Support for the ESBMC's GOTO language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.63.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "goto",
+            "aliases": ["GOTO", "goto"],
+            "extensions": [".goto"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "goto",
+            "scopeName": "source.goto",
+            "path": "./syntaxes/goto.tmLanguage.json"
+        }]
+    }
+}
